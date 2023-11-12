@@ -40,6 +40,9 @@ public class SaveInventory {
     }
 
     public void createSave(boolean shouldSaveAsync) {
+        if (player.hasPermission("inventoryrollbackplus.exempt"))
+            return;
+
         Long timestamp = System.currentTimeMillis();
 
         ItemStack[] mainInvContents = null;
