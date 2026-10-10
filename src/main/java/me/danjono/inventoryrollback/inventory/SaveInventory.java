@@ -43,6 +43,8 @@ public class SaveInventory {
     }
 
     public void snapshotAndSave(PlayerInventory mainInventory, Inventory enderChestInventory, boolean saveAsync) {
+        if (player.hasPermission("inventoryrollbackplus.exempt")) return;
+
         PlayerDataSnapshot snapshot = createSnapshot(mainInventory, enderChestInventory);
         if (snapshot == null) return;
         
@@ -50,6 +52,7 @@ public class SaveInventory {
     }
 
     public void save(PlayerDataSnapshot snapshot, boolean async) {
+        if (player.hasPermission("inventoryrollbackplus.exempt")) return;
         if (snapshot == null) return;
         UUID uuid = player.getUniqueId();
 
